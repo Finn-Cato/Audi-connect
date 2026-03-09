@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Audi four-rings logo -->
+  <circle cx="14" cy="50" r="12" fill="none" stroke="#BB0A21" stroke-width="3"/>
+  <circle cx="38" cy="50" r="12" fill="none" stroke="#BB0A21" stroke-width="3"/>
+  <circle cx="62" cy="50" r="12" fill="none" stroke="#BB0A21" stroke-width="3"/>
+  <circle cx="86" cy="50" r="12" fill="none" stroke="#BB0A21" stroke-width="3"/>
+</svg>

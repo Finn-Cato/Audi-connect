@@ -11,8 +11,10 @@ class AudiDevice extends Homey.Device {
   async onInit() {
     this.log('AudiDevice init:', this.getData().vin);
     this._vin = this.getData().vin;
-    this._api = new AudiApi();
+    const brand = await this.getStoreValue('brand') || 'audi';
+    this._api = new AudiApi(brand);
     this._prevChargingState = null;
+    this._lastClimateSettings = null; // cached from last poll
 
     // Restore tokens from encrypted store
     const tokens = await this.getStoreValue('tokens');
@@ -20,6 +22,9 @@ class AudiDevice extends Homey.Device {
 
     // Capability listeners
     this.registerCapabilityListener('locked', this._onLockToggle.bind(this));
+    this.registerCapabilityListener('climate_on', this._onClimateToggle.bind(this));
+    this.registerCapabilityListener('climate_temperature', this._onTemperatureSet.bind(this));
+    this.registerCapabilityListener('climate_window_heat', this._onWindowHeatToggle.bind(this));
 
     // Start polling
     this._startPolling();
@@ -72,9 +77,13 @@ class AudiDevice extends Homey.Device {
   async _applyStatus(data) {
     // ── EV battery ──
     const batt = data?.charging?.batteryStatus?.value;
-    if (batt?.currentSoCInPercent !== undefined) {
-      await this._set('measure_battery', batt.currentSoCInPercent);
-      await this._set('alarm_battery', batt.currentSoCInPercent < 15);
+    if (batt !== undefined) {
+      // API returns currentSOC_pct (EV battery)
+      const soc = batt.currentSOC_pct ?? batt.currentSoCInPercent;
+      if (soc !== undefined) {
+        await this._set('measure_battery', soc);
+        await this._set('alarm_battery', soc < 15);
+      }
       const rangeKm = batt.cruisingRangeElectric_km ?? batt.cruisingRangeElectricInKilometers ?? 0;
       await this._set('measure_range', rangeKm);
     }
@@ -92,7 +101,7 @@ class AudiDevice extends Homey.Device {
     // ── Charging state ──
     const chargingState = data?.charging?.chargingStatus?.value?.chargingState;
     if (chargingState !== undefined) {
-      await this._set('charging_status', chargingState);
+      await this._set('charging_status', this._normalizeChargingState(chargingState));
       this._fireChargingTriggers(chargingState);
     }
 
@@ -100,6 +109,22 @@ class AudiDevice extends Homey.Device {
     const doorLock = data?.access?.accessStatus?.value?.doorLockStatus;
     if (doorLock !== undefined) {
       await this._set('locked', doorLock === 'locked');
+    }
+
+    // ── Climate state ──
+    const climateState = data?.climatisation?.climatisationStatus?.value?.climatisationState;
+    if (climateState !== undefined) {
+      await this._set('climate_on', climateState !== 'off');
+    }
+
+    // ── Climate settings ──
+    const climateSettings = data?.climatisation?.climatisationSettings?.value;
+    if (climateSettings) {
+      this._lastClimateSettings = climateSettings; // cache full object for next start
+      if (climateSettings.targetTemperature_C !== undefined)
+        await this._set('climate_temperature', climateSettings.targetTemperature_C);
+      if (climateSettings.windowHeatingEnabled !== undefined)
+        await this._set('climate_window_heat', climateSettings.windowHeatingEnabled);
     }
   }
 
@@ -128,6 +153,43 @@ class AudiDevice extends Homey.Device {
         .trigger(this, {}, {})
         .catch(this.error);
     }
+  }
+
+  // ── Climate capability listener ─────────────────────────────────────────────
+
+  async _onClimateToggle(value) {
+    if (value) {
+      // Send current slider/toggle values to the car when turning ON
+      const temp    = this.getCapabilityValue('climate_temperature') ?? 22;
+      const winHeat = this.getCapabilityValue('climate_window_heat') ?? false;
+      await this._api.startClimate(this._vin, temp, winHeat, this._lastClimateSettings);
+    } else {
+      await this._api.stopClimate(this._vin);
+    }
+  }
+
+  async _onTemperatureSet(/* value */) {
+    // Just save locally — applied next time climate is turned ON
+  }
+
+  async _onWindowHeatToggle(/* value */) {
+    // Just save locally — applied next time climate is turned ON
+  }
+
+  // ── Charging state normalizer ─────────────────────────────────────────────
+  // The Cariad API returns verbose strings that must map to our enum IDs.
+  _normalizeChargingState(raw) {
+    if (!raw) return 'invalid';
+    const s = raw.toLowerCase();
+    if (s === 'charging') return 'charging';
+    if (s.includes('conservation') || s.includes('conserving')) return 'conserving';
+    if (s.includes('chargepurposereached') || s.includes('charged') || s.includes('fullycharge')) return 'charged';
+    if (s === 'readyforcharging') return 'readyForCharging';
+    if (s === 'notreadyforcharging') return 'notReadyForCharging';
+    if (s === 'error' || s === 'invalid' || s === 'fault') return 'invalid';
+    // Unknown value — log it and fall back so the enum never breaks
+    this.log('Unknown chargingState from API:', raw);
+    return 'invalid';
   }
 
   // ── Lock capability listener ───────────────────────────────────────────────
