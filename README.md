@@ -1,4 +1,4 @@
-﻿# VAG Connect for Homey
+# Audi Connect for Homey
 
 Control your **Audi** or **Škoda** directly from Homey  lock/unlock doors, start remote pre-heating, monitor battery and charging status, and more. No extra account or subscription needed  you log in with your own manufacturer account.
 
@@ -44,7 +44,7 @@ If live data does not appear in the official app, this Homey app will not work e
 ### Step 2  Add the device in Homey
 
 1. Open the **Homey** app  **Devices**  tap **+**.
-2. Search for **VAG Connect**.
+2. Search for **Audi Connect**.
 3. Choose your brand: **Audi Vehicle** or **Škoda Vehicle**.
 4. Enter your **email and password**  the same credentials used in the myAudi / We Connect / MyŠkoda app.
 5. Your cars appear  tap the one you want and tap **Add**.

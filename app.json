@@ -4,7 +4,7 @@
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
-    "en": "Audi & Škoda Connect"
+    "en": "Audi Connect"
   },
   "description": {
     "en": "Control your Audi or Å koda. Lock/unlock, climate, charging & live data via the official connected-car API."
