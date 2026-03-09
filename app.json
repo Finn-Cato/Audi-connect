@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "name": { "en": "Audi Connect" },
-  "description": { "en": "Control your Audi via myAudi Connect. Lock/unlock, climate, charging & live data." },
+  "name": { "en": "VAG Connect" },
+  "description": { "en": "Control your Audi, Volkswagen or Škoda. Lock/unlock, climate, charging & live data via the official connected-car API." },
   "category": ["security"],
+  "brandColor": "#1A1A1A",
   "permissions": [],
   "images": {
     "small": "/assets/images/small.png",

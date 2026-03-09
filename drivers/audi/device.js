@@ -100,8 +100,11 @@ class AudiDevice extends Homey.Device {
 
     // ── Charging state ──
     const chargingState = data?.charging?.chargingStatus?.value?.chargingState;
+    this.log('DEBUG charging block:', JSON.stringify(data?.charging?.chargingStatus?.value));
     if (chargingState !== undefined) {
-      await this._set('charging_status', this._normalizeChargingState(chargingState));
+      const normalized = this._normalizeChargingState(chargingState);
+      this.log(`DEBUG chargingState raw="${chargingState}" → normalized="${normalized}"`);
+      await this._set('charging_status', normalized);
       this._fireChargingTriggers(chargingState);
     }
 
