@@ -1,4 +1,11 @@
-﻿## v0.1.0  2026-03-09
+﻿## v0.1.1  2026-03-09
+
+- Removed Volkswagen support (a dedicated VW app already exists on the App Store)
+- Renamed app to **Audi Connect**
+- New Audi and Škoda branding images
+- Fixed app install bundle size (97 MB → 11 MB — much faster installation)
+
+## v0.1.0  2026-03-09
 
 ### Initial release
 

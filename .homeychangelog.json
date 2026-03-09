@@ -1,4 +1,7 @@
 ﻿{
+    "0.1.1": {
+        "en": "Removed Volkswagen support (a dedicated VW app already exists on the App Store). Renamed app to Audi Connect. New Audi and Skoda branding images. Fixed app install bundle size (97 MB to 11 MB, much faster installation)."
+    },
     "0.1.0":  {
                   "en":  "Initial release. Supports Audi, Volkswagen and Skoda vehicles via the official Cariad connected-car API. Lock/unlock, remote pre-conditioning with temperature and window heating, EV battery level, range, charging status, start/stop charging. Configurable background polling. Flow cards for charging started/stopped and climate/charging actions. S-PIN support for models requiring a security PIN. Debug logging toggle in device settings."
               }
