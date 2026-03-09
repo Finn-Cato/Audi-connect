@@ -1,8 +1,7 @@
-﻿VAG Connect lets you control your Audi, Volkswagen or Skoda directly from Homey using the official Cariad connected-car API. No extra subscriptions  just log in with your existing manufacturer account.
+﻿Audi & Skoda Connect lets you control your Audi or Skoda directly from Homey using the official Cariad connected-car API. No extra subscriptions  just log in with your existing manufacturer account.
 
 SUPPORTED BRANDS
 - Audi (myAudi account)
-- Volkswagen (We Connect account)
 - Skoda (Skoda Connect account)
 
 FEATURES
@@ -22,7 +21,7 @@ FLOW CARDS
 HOW TO USE
 1. Make sure your car is enrolled in the connected-car service (myAudi / We Connect / Skoda Connect app).
 2. In Homey, go to Devices > + > VAG Connect and choose your brand.
-3. Log in with your manufacturer account email and password.
+3. Log in with your myAudi or Skoda Connect email and password.
 4. Your vehicles will be listed  add the one you want.
 
 DEVICE SETTINGS
@@ -32,3 +31,4 @@ DEVICE SETTINGS
 
 PRIVACY
 Your credentials are used only to obtain an OAuth access token, which is stored encrypted in Homey. Your password is never stored. All communication is directly with the official Cariad API (emea.bff.cariad.digital).
+

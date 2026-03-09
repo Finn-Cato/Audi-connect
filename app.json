@@ -4,10 +4,10 @@
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
-    "en": "VAG Connect"
+    "en": "Audi & Škoda Connect"
   },
   "description": {
-    "en": "Control your Audi, Volkswagen or Škoda. Lock/unlock, climate, charging & live data via the official connected-car API."
+    "en": "Control your Audi or Å koda. Lock/unlock, climate, charging & live data via the official connected-car API."
   },
   "category": [
     "security"
@@ -103,7 +103,7 @@
         "en": "Target Temperature"
       },
       "units": {
-        "en": "°C"
+        "en": "Â°C"
       },
       "getable": true,
       "setable": true,
@@ -137,7 +137,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+            "filter": "driver_id=audi|driver_id=skoda"
           }
         ]
       },
@@ -150,7 +150,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+            "filter": "driver_id=audi|driver_id=skoda"
           }
         ]
       },
@@ -163,7 +163,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+            "filter": "driver_id=audi|driver_id=skoda"
           }
         ]
       },
@@ -176,7 +176,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+            "filter": "driver_id=audi|driver_id=skoda"
           }
         ]
       }
@@ -191,7 +191,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+            "filter": "driver_id=audi|driver_id=skoda"
           }
         ]
       },
@@ -204,7 +204,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+            "filter": "driver_id=audi|driver_id=skoda"
           }
         ]
       }
@@ -219,7 +219,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+            "filter": "driver_id=audi|driver_id=skoda"
           }
         ]
       }
@@ -376,158 +376,9 @@
       ]
     },
     {
-      "id": "vw",
-      "name": {
-        "en": "Volkswagen Vehicle"
-      },
-      "class": "other",
-      "capabilities": [
-        "locked",
-        "measure_battery",
-        "alarm_battery",
-        "charging_status",
-        "measure_range",
-        "climate_on",
-        "climate_temperature",
-        "climate_window_heat"
-      ],
-      "mobile": {
-        "components": [
-          {
-            "id": "icon",
-            "capabilities": [
-              "locked"
-            ]
-          },
-          {
-            "id": "sensor",
-            "capabilities": [
-              "measure_battery",
-              "alarm_battery",
-              "charging_status",
-              "measure_range"
-            ]
-          },
-          {
-            "id": "toggle",
-            "capabilities": [
-              "locked"
-            ]
-          },
-          {
-            "id": "separator"
-          },
-          {
-            "id": "sensor",
-            "capabilities": [
-              "climate_on"
-            ]
-          },
-          {
-            "id": "slider",
-            "capabilities": [
-              "climate_temperature"
-            ]
-          },
-          {
-            "id": "toggle",
-            "capabilities": [
-              "climate_window_heat"
-            ]
-          },
-          {
-            "id": "toggle",
-            "capabilities": [
-              "climate_on"
-            ]
-          }
-        ]
-      },
-      "energy": {
-        "batteries": [
-          "INTERNAL"
-        ]
-      },
-      "images": {
-        "small": "/drivers/vw/assets/images/small.png",
-        "large": "/drivers/vw/assets/images/large.png",
-        "xlarge": "/drivers/vw/assets/images/xlarge.png"
-      },
-      "settings": [
-        {
-          "id": "vin",
-          "type": "label",
-          "label": {
-            "en": "Vehicle VIN"
-          },
-          "value": ""
-        },
-        {
-          "id": "spin",
-          "type": "password",
-          "label": {
-            "en": "S-PIN (Security PIN)"
-          },
-          "hint": {
-            "en": "Required for lock/unlock on some models"
-          },
-          "value": ""
-        },
-        {
-          "id": "poll_interval",
-          "type": "number",
-          "label": {
-            "en": "Poll interval (minutes)"
-          },
-          "value": 5,
-          "min": 2,
-          "max": 60
-        },
-        {
-          "id": "debug_logging",
-          "type": "checkbox",
-          "label": {
-            "en": "Debug logging"
-          },
-          "hint": {
-            "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)"
-          },
-          "value": false
-        }
-      ],
-      "pair": [
-        {
-          "id": "login_credentials",
-          "template": "login_credentials",
-          "options": {
-            "hint": {
-              "en": "Enter your Volkswagen We Connect account credentials"
-            },
-            "usernameLabel": {
-              "en": "We Connect Email"
-            },
-            "passwordLabel": {
-              "en": "We Connect Password"
-            }
-          }
-        },
-        {
-          "id": "list_devices",
-          "template": "list_devices",
-          "navigation": {
-            "next": "add_devices"
-          }
-        },
-        {
-          "id": "add_devices",
-          "template": "add_devices"
-        }
-      ]
-    },
-    {
       "id": "skoda",
       "name": {
-        "en": "Škoda Vehicle"
+        "en": "Å koda Vehicle"
       },
       "class": "other",
       "capabilities": [
@@ -650,13 +501,13 @@
           "template": "login_credentials",
           "options": {
             "hint": {
-              "en": "Enter your Škoda Connect account credentials"
+              "en": "Enter your Å koda Connect account credentials"
             },
             "usernameLabel": {
-              "en": "Škoda Connect Email"
+              "en": "Å koda Connect Email"
             },
             "passwordLabel": {
-              "en": "Škoda Connect Password"
+              "en": "Å koda Connect Password"
             }
           }
         },

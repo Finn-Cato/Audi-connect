@@ -1,7 +1,7 @@
 {
   "app": {
-    "name": "VAG Connect",
-    "description": "Control your Audi, Volkswagen or Škoda via their connected-car APIs"
+    "name": "Audi & Škoda Connect",
+    "description": "Control your Audi or Škoda via their connected-car APIs"
   },
   "pair": {
     "login_failed": "Login failed. Check your myAudi email and password."

@@ -1,6 +1,6 @@
 ﻿# VAG Connect for Homey
 
-Control your **Audi**, **Volkswagen** or **Škoda** directly from Homey  lock/unlock doors, start remote pre-heating, monitor battery and charging status, and more. No extra account or subscription needed  you log in with your own manufacturer account.
+Control your **Audi** or **Škoda** directly from Homey  lock/unlock doors, start remote pre-heating, monitor battery and charging status, and more. No extra account or subscription needed  you log in with your own manufacturer account.
 
 ---
 
@@ -12,7 +12,7 @@ Control your **Audi**, **Volkswagen** or **Škoda** directly from Homey  lock/un
 | Volkswagen | We Connect account | We Connect |
 | Škoda | Škoda Connect account | MyŠkoda |
 
-All three brands share the same VAG Group / Cariad connected-car backend (`emea.bff.cariad.digital`), so the same features are available across all of them.
+Both brands share the same VAG Group / Cariad connected-car backend (`emea.bff.cariad.digital`), so the same features are available across both of them.
 
 ---
 
@@ -37,7 +37,6 @@ All three brands share the same VAG Group / Cariad connected-car backend (`emea.
 Before anything will work, your car must be active in your manufacturer's app:
 
 - **Audi**: Download **myAudi** and connect your car. Verify you can see live data (lock status, battery, etc.) in the app.
-- **VW**: Download **We Connect** and activate connected services for your car.
 - **Škoda**: Download **MyŠkoda** and activate Škoda Connect.
 
 If live data does not appear in the official app, this Homey app will not work either.
@@ -46,7 +45,7 @@ If live data does not appear in the official app, this Homey app will not work e
 
 1. Open the **Homey** app  **Devices**  tap **+**.
 2. Search for **VAG Connect**.
-3. Choose your brand: **Audi Vehicle**, **Volkswagen Vehicle**, or **Škoda Vehicle**.
+3. Choose your brand: **Audi Vehicle** or **Škoda Vehicle**.
 4. Enter your **email and password**  the same credentials used in the myAudi / We Connect / MyŠkoda app.
 5. Your cars appear  tap the one you want and tap **Add**.
 
@@ -125,3 +124,4 @@ Requires [Homey CLI](https://apps.developer.homey.app/the-basics/getting-started
 ## License
 
 MIT
+
