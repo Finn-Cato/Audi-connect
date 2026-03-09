@@ -1,3 +1,8 @@
 node_modules/
+.homeybuild/
 .homeycompose/
 *.log
+assets/Audi Logo.png
+assets/Skoda logo.png
+drivers/skoda/assets/Skoda logo.png
+test-auth.js
