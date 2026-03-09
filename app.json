@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
-  "name": { "en": "VAG Connect" },
-  "description": { "en": "Control your Audi, Volkswagen or Škoda. Lock/unlock, climate, charging & live data via the official connected-car API." },
-  "category": ["security"],
+  "name": {
+    "en": "VAG Connect"
+  },
+  "description": {
+    "en": "Control your Audi, Volkswagen or Škoda. Lock/unlock, climate, charging & live data via the official connected-car API."
+  },
+  "category": [
+    "security"
+  ],
   "brandColor": "#1A1A1A",
   "permissions": [],
   "images": {
@@ -13,28 +19,66 @@
     "large": "/assets/images/large.png",
     "xlarge": "/assets/images/xlarge.png"
   },
-  "author": { "name": "" },
+  "author": {
+    "name": ""
+  },
   "capabilities": {
     "charging_status": {
       "type": "enum",
-      "title": { "en": "Charging Status" },
+      "title": {
+        "en": "Charging Status"
+      },
       "getable": true,
       "setable": false,
       "uiComponent": "sensor",
       "icon": "/assets/capabilities/charging_status.svg",
       "values": [
-        { "id": "charging",             "title": { "en": "Charging" } },
-        { "id": "charged",              "title": { "en": "Fully Charged" } },
-        { "id": "notReadyForCharging",  "title": { "en": "Not ready" } },
-        { "id": "readyForCharging",     "title": { "en": "Ready to charge" } },
-        { "id": "conserving",           "title": { "en": "Conserving" } },
-        { "id": "invalid",             "title": { "en": "Unknown" } }
+        {
+          "id": "charging",
+          "title": {
+            "en": "Charging"
+          }
+        },
+        {
+          "id": "charged",
+          "title": {
+            "en": "Fully Charged"
+          }
+        },
+        {
+          "id": "notReadyForCharging",
+          "title": {
+            "en": "Not ready"
+          }
+        },
+        {
+          "id": "readyForCharging",
+          "title": {
+            "en": "Ready to charge"
+          }
+        },
+        {
+          "id": "conserving",
+          "title": {
+            "en": "Conserving"
+          }
+        },
+        {
+          "id": "invalid",
+          "title": {
+            "en": "Unknown"
+          }
+        }
       ]
     },
     "measure_range": {
       "type": "number",
-      "title": { "en": "Range" },
-      "units": { "en": "km" },
+      "title": {
+        "en": "Range"
+      },
+      "units": {
+        "en": "km"
+      },
       "getable": true,
       "setable": false,
       "uiComponent": "sensor",
@@ -44,7 +88,9 @@
     },
     "climate_on": {
       "type": "boolean",
-      "title": { "en": "Climate" },
+      "title": {
+        "en": "Climate"
+      },
       "getable": true,
       "setable": true,
       "uiComponent": "toggle",
@@ -53,8 +99,12 @@
     },
     "climate_temperature": {
       "type": "number",
-      "title": { "en": "Target Temperature" },
-      "units": { "en": "°C" },
+      "title": {
+        "en": "Target Temperature"
+      },
+      "units": {
+        "en": "°C"
+      },
       "getable": true,
       "setable": true,
       "uiComponent": "slider",
@@ -66,7 +116,9 @@
     },
     "climate_window_heat": {
       "type": "boolean",
-      "title": { "en": "Window Heating" },
+      "title": {
+        "en": "Window Heating"
+      },
       "getable": true,
       "setable": true,
       "uiComponent": "toggle",
@@ -78,49 +130,107 @@
     "actions": [
       {
         "id": "start_climate",
-        "title": { "en": "Start pre-conditioning" },
-        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi|driver_id=vw|driver_id=skoda" }]
+        "title": {
+          "en": "Start pre-conditioning"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+          }
+        ]
       },
       {
         "id": "stop_climate",
-        "title": { "en": "Stop pre-conditioning" },
-        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi|driver_id=vw|driver_id=skoda" }]
+        "title": {
+          "en": "Stop pre-conditioning"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+          }
+        ]
       },
       {
         "id": "start_charging",
-        "title": { "en": "Start charging" },
-        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi|driver_id=vw|driver_id=skoda" }]
+        "title": {
+          "en": "Start charging"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+          }
+        ]
       },
       {
         "id": "stop_charging",
-        "title": { "en": "Stop charging" },
-        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi|driver_id=vw|driver_id=skoda" }]
+        "title": {
+          "en": "Stop charging"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+          }
+        ]
       }
     ],
     "triggers": [
       {
         "id": "charging_started",
-        "title": { "en": "Charging started" },
-        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi|driver_id=vw|driver_id=skoda" }]
+        "title": {
+          "en": "Charging started"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+          }
+        ]
       },
       {
         "id": "charging_stopped",
-        "title": { "en": "Charging stopped" },
-        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi|driver_id=vw|driver_id=skoda" }]
+        "title": {
+          "en": "Charging stopped"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+          }
+        ]
       }
     ],
     "conditions": [
       {
         "id": "is_charging",
-        "title": { "en": "Car !{{is|is not}} charging" },
-        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi|driver_id=vw|driver_id=skoda" }]
+        "title": {
+          "en": "Car !{{is|is not}} charging"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=audi|driver_id=vw|driver_id=skoda"
+          }
+        ]
       }
     ]
   },
   "drivers": [
     {
       "id": "audi",
-      "name": { "en": "Audi Vehicle" },
+      "name": {
+        "en": "Audi Vehicle"
+      },
       "class": "other",
       "capabilities": [
         "locked",
@@ -136,39 +246,58 @@
         "components": [
           {
             "id": "icon",
-            "capabilities": ["locked"]
+            "capabilities": [
+              "locked"
+            ]
           },
           {
             "id": "sensor",
-            "capabilities": ["measure_battery", "alarm_battery", "charging_status", "measure_range"]
+            "capabilities": [
+              "measure_battery",
+              "alarm_battery",
+              "charging_status",
+              "measure_range"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["locked"]
+            "capabilities": [
+              "locked"
+            ]
           },
           {
             "id": "separator"
           },
           {
             "id": "sensor",
-            "capabilities": ["climate_on"]
+            "capabilities": [
+              "climate_on"
+            ]
           },
           {
             "id": "slider",
-            "capabilities": ["climate_temperature"]
+            "capabilities": [
+              "climate_temperature"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["climate_window_heat"]
+            "capabilities": [
+              "climate_window_heat"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["climate_on"]
+            "capabilities": [
+              "climate_on"
+            ]
           }
         ]
       },
       "energy": {
-        "batteries": ["INTERNAL"]
+        "batteries": [
+          "INTERNAL"
+        ]
       },
       "images": {
         "small": "/drivers/audi/assets/images/small.png",
@@ -179,20 +308,28 @@
         {
           "id": "vin",
           "type": "label",
-          "label": { "en": "Vehicle VIN" },
+          "label": {
+            "en": "Vehicle VIN"
+          },
           "value": ""
         },
         {
           "id": "spin",
           "type": "password",
-          "label": { "en": "S-PIN (Security PIN)" },
-          "hint": { "en": "Required for lock/unlock on some Audi models" },
+          "label": {
+            "en": "S-PIN (Security PIN)"
+          },
+          "hint": {
+            "en": "Required for lock/unlock on some Audi models"
+          },
           "value": ""
         },
         {
           "id": "poll_interval",
           "type": "number",
-          "label": { "en": "Poll interval (minutes)" },
+          "label": {
+            "en": "Poll interval (minutes)"
+          },
           "value": 5,
           "min": 2,
           "max": 60
@@ -200,8 +337,12 @@
         {
           "id": "debug_logging",
           "type": "checkbox",
-          "label": { "en": "Debug logging" },
-          "hint": { "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)" },
+          "label": {
+            "en": "Debug logging"
+          },
+          "hint": {
+            "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)"
+          },
           "value": false
         }
       ],
@@ -210,15 +351,23 @@
           "id": "login_credentials",
           "template": "login_credentials",
           "options": {
-            "hint": { "en": "Enter your myAudi account credentials (same as the myAudi app)" },
-            "usernameLabel": { "en": "myAudi Email" },
-            "passwordLabel": { "en": "myAudi Password" }
+            "hint": {
+              "en": "Enter your myAudi account credentials (same as the myAudi app)"
+            },
+            "usernameLabel": {
+              "en": "myAudi Email"
+            },
+            "passwordLabel": {
+              "en": "myAudi Password"
+            }
           }
         },
         {
           "id": "list_devices",
           "template": "list_devices",
-          "navigation": { "next": "add_devices" }
+          "navigation": {
+            "next": "add_devices"
+          }
         },
         {
           "id": "add_devices",
@@ -228,7 +377,9 @@
     },
     {
       "id": "vw",
-      "name": { "en": "Volkswagen Vehicle" },
+      "name": {
+        "en": "Volkswagen Vehicle"
+      },
       "class": "other",
       "capabilities": [
         "locked",
@@ -244,39 +395,58 @@
         "components": [
           {
             "id": "icon",
-            "capabilities": ["locked"]
+            "capabilities": [
+              "locked"
+            ]
           },
           {
             "id": "sensor",
-            "capabilities": ["measure_battery", "alarm_battery", "charging_status", "measure_range"]
+            "capabilities": [
+              "measure_battery",
+              "alarm_battery",
+              "charging_status",
+              "measure_range"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["locked"]
+            "capabilities": [
+              "locked"
+            ]
           },
           {
             "id": "separator"
           },
           {
             "id": "sensor",
-            "capabilities": ["climate_on"]
+            "capabilities": [
+              "climate_on"
+            ]
           },
           {
             "id": "slider",
-            "capabilities": ["climate_temperature"]
+            "capabilities": [
+              "climate_temperature"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["climate_window_heat"]
+            "capabilities": [
+              "climate_window_heat"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["climate_on"]
+            "capabilities": [
+              "climate_on"
+            ]
           }
         ]
       },
       "energy": {
-        "batteries": ["INTERNAL"]
+        "batteries": [
+          "INTERNAL"
+        ]
       },
       "images": {
         "small": "/drivers/vw/assets/images/small.png",
@@ -287,20 +457,28 @@
         {
           "id": "vin",
           "type": "label",
-          "label": { "en": "Vehicle VIN" },
+          "label": {
+            "en": "Vehicle VIN"
+          },
           "value": ""
         },
         {
           "id": "spin",
           "type": "password",
-          "label": { "en": "S-PIN (Security PIN)" },
-          "hint": { "en": "Required for lock/unlock on some models" },
+          "label": {
+            "en": "S-PIN (Security PIN)"
+          },
+          "hint": {
+            "en": "Required for lock/unlock on some models"
+          },
           "value": ""
         },
         {
           "id": "poll_interval",
           "type": "number",
-          "label": { "en": "Poll interval (minutes)" },
+          "label": {
+            "en": "Poll interval (minutes)"
+          },
           "value": 5,
           "min": 2,
           "max": 60
@@ -308,8 +486,12 @@
         {
           "id": "debug_logging",
           "type": "checkbox",
-          "label": { "en": "Debug logging" },
-          "hint": { "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)" },
+          "label": {
+            "en": "Debug logging"
+          },
+          "hint": {
+            "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)"
+          },
           "value": false
         }
       ],
@@ -318,15 +500,23 @@
           "id": "login_credentials",
           "template": "login_credentials",
           "options": {
-            "hint": { "en": "Enter your Volkswagen We Connect account credentials" },
-            "usernameLabel": { "en": "We Connect Email" },
-            "passwordLabel": { "en": "We Connect Password" }
+            "hint": {
+              "en": "Enter your Volkswagen We Connect account credentials"
+            },
+            "usernameLabel": {
+              "en": "We Connect Email"
+            },
+            "passwordLabel": {
+              "en": "We Connect Password"
+            }
           }
         },
         {
           "id": "list_devices",
           "template": "list_devices",
-          "navigation": { "next": "add_devices" }
+          "navigation": {
+            "next": "add_devices"
+          }
         },
         {
           "id": "add_devices",
@@ -336,7 +526,9 @@
     },
     {
       "id": "skoda",
-      "name": { "en": "Škoda Vehicle" },
+      "name": {
+        "en": "Škoda Vehicle"
+      },
       "class": "other",
       "capabilities": [
         "locked",
@@ -352,39 +544,58 @@
         "components": [
           {
             "id": "icon",
-            "capabilities": ["locked"]
+            "capabilities": [
+              "locked"
+            ]
           },
           {
             "id": "sensor",
-            "capabilities": ["measure_battery", "alarm_battery", "charging_status", "measure_range"]
+            "capabilities": [
+              "measure_battery",
+              "alarm_battery",
+              "charging_status",
+              "measure_range"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["locked"]
+            "capabilities": [
+              "locked"
+            ]
           },
           {
             "id": "separator"
           },
           {
             "id": "sensor",
-            "capabilities": ["climate_on"]
+            "capabilities": [
+              "climate_on"
+            ]
           },
           {
             "id": "slider",
-            "capabilities": ["climate_temperature"]
+            "capabilities": [
+              "climate_temperature"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["climate_window_heat"]
+            "capabilities": [
+              "climate_window_heat"
+            ]
           },
           {
             "id": "toggle",
-            "capabilities": ["climate_on"]
+            "capabilities": [
+              "climate_on"
+            ]
           }
         ]
       },
       "energy": {
-        "batteries": ["INTERNAL"]
+        "batteries": [
+          "INTERNAL"
+        ]
       },
       "images": {
         "small": "/drivers/skoda/assets/images/small.png",
@@ -395,20 +606,28 @@
         {
           "id": "vin",
           "type": "label",
-          "label": { "en": "Vehicle VIN" },
+          "label": {
+            "en": "Vehicle VIN"
+          },
           "value": ""
         },
         {
           "id": "spin",
           "type": "password",
-          "label": { "en": "S-PIN (Security PIN)" },
-          "hint": { "en": "Required for lock/unlock on some models" },
+          "label": {
+            "en": "S-PIN (Security PIN)"
+          },
+          "hint": {
+            "en": "Required for lock/unlock on some models"
+          },
           "value": ""
         },
         {
           "id": "poll_interval",
           "type": "number",
-          "label": { "en": "Poll interval (minutes)" },
+          "label": {
+            "en": "Poll interval (minutes)"
+          },
           "value": 5,
           "min": 2,
           "max": 60
@@ -416,8 +635,12 @@
         {
           "id": "debug_logging",
           "type": "checkbox",
-          "label": { "en": "Debug logging" },
-          "hint": { "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)" },
+          "label": {
+            "en": "Debug logging"
+          },
+          "hint": {
+            "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)"
+          },
           "value": false
         }
       ],
@@ -426,15 +649,23 @@
           "id": "login_credentials",
           "template": "login_credentials",
           "options": {
-            "hint": { "en": "Enter your Škoda Connect account credentials" },
-            "usernameLabel": { "en": "Škoda Connect Email" },
-            "passwordLabel": { "en": "Škoda Connect Password" }
+            "hint": {
+              "en": "Enter your Škoda Connect account credentials"
+            },
+            "usernameLabel": {
+              "en": "Škoda Connect Email"
+            },
+            "passwordLabel": {
+              "en": "Škoda Connect Password"
+            }
           }
         },
         {
           "id": "list_devices",
           "template": "list_devices",
-          "navigation": { "next": "add_devices" }
+          "navigation": {
+            "next": "add_devices"
+          }
         },
         {
           "id": "add_devices",
