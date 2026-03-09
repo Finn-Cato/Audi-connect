@@ -1,0 +1,21 @@
+{
+  "app": {
+    "name": "Audi Connect",
+    "description": "Control your Audi via myAudi Connect"
+  },
+  "pair": {
+    "login_failed": "Login failed. Check your myAudi email and password."
+  },
+  "device": {
+    "reauth_required": "Re-authentication required. Please remove and re-add the vehicle.",
+    "poll_error": "Could not retrieve vehicle status."
+  },
+  "charging_status": {
+    "charging": "Charging",
+    "charged": "Fully charged",
+    "notReadyForCharging": "Not ready",
+    "readyForCharging": "Ready",
+    "conserving": "Conserving",
+    "invalid": "Unknown"
+  }
+}

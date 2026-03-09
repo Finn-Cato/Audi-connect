@@ -1,0 +1,140 @@
+{
+  "id": "com.audi.connect",
+  "version": "0.1.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "name": { "en": "Audi Connect" },
+  "description": { "en": "Control your Audi via myAudi Connect. Lock/unlock, climate, charging & live data." },
+  "category": ["other"],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": { "name": "" },
+  "capabilities": {
+    "charging_status": {
+      "type": "string",
+      "title": { "en": "Charging Status" },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor"
+    },
+    "measure_range": {
+      "type": "number",
+      "title": { "en": "Range" },
+      "units": { "en": "km" },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "decimals": 0,
+      "min": 0
+    }
+  },
+  "flow": {
+    "actions": [
+      {
+        "id": "start_climate",
+        "title": { "en": "Start pre-conditioning" },
+        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi" }]
+      },
+      {
+        "id": "stop_climate",
+        "title": { "en": "Stop pre-conditioning" },
+        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi" }]
+      },
+      {
+        "id": "start_charging",
+        "title": { "en": "Start charging" },
+        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi" }]
+      },
+      {
+        "id": "stop_charging",
+        "title": { "en": "Stop charging" },
+        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi" }]
+      }
+    ],
+    "triggers": [
+      {
+        "id": "charging_started",
+        "title": { "en": "Charging started" },
+        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi" }]
+      },
+      {
+        "id": "charging_stopped",
+        "title": { "en": "Charging stopped" },
+        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi" }]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "is_charging",
+        "title": { "en": "Car !{{is|is not}} charging" },
+        "args": [{ "type": "device", "name": "device", "filter": "driver_id=audi" }]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "id": "audi",
+      "name": { "en": "Audi Vehicle" },
+      "class": "other",
+      "capabilities": [
+        "locked",
+        "measure_battery",
+        "alarm_battery",
+        "charging_status",
+        "measure_range"
+      ],
+      "images": {
+        "small": "/drivers/audi/assets/images/small.png",
+        "large": "/drivers/audi/assets/images/large.png",
+        "xlarge": "/drivers/audi/assets/images/xlarge.png"
+      },
+      "settings": [
+        {
+          "id": "vin",
+          "type": "label",
+          "label": { "en": "Vehicle VIN" },
+          "value": ""
+        },
+        {
+          "id": "spin",
+          "type": "password",
+          "label": { "en": "S-PIN (Security PIN)" },
+          "hint": { "en": "Required for lock/unlock on some Audi models" },
+          "value": ""
+        },
+        {
+          "id": "poll_interval",
+          "type": "number",
+          "label": { "en": "Poll interval (minutes)" },
+          "value": 5,
+          "min": 2,
+          "max": 60
+        }
+      ],
+      "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "hint": { "en": "Enter your myAudi account credentials (same as the myAudi app)" },
+            "usernameLabel": { "en": "myAudi Email" },
+            "passwordLabel": { "en": "myAudi Password" }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": { "next": "add_devices" }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ]
+    }
+  ]
+}
