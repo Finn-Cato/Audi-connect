@@ -39,6 +39,7 @@ class AudiDriver extends Homey.Driver {
           vin: v.vin,
           spin: '',
           poll_interval: 5,
+          debug_logging: false,
         },
       }));
     });

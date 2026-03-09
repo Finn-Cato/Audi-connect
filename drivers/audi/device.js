@@ -13,8 +13,10 @@ class AudiDevice extends Homey.Device {
     this._vin = this.getData().vin;
     const brand = await this.getStoreValue('brand') || 'audi';
     this._api = new AudiApi(brand);
+    this._api.setLogger((...a) => this._debug(...a));
     this._prevChargingState = null;
     this._lastClimateSettings = null; // cached from last poll
+    this._pollErrors = 0;
 
     // Restore tokens from encrypted store
     const tokens = await this.getStoreValue('tokens');
@@ -49,18 +51,24 @@ class AudiDevice extends Homey.Device {
   }
 
   async _poll() {
+    this._debug('poll start:', this._vin);
     try {
       const status = await this._api.getVehicleStatus(this._vin);
+      this._debug('poll ok, sections:', Object.keys(status || {}).join(', '));
       await this._applyStatus(status);
+      this._pollErrors = 0;
       await this.setAvailable();
     } catch (err) {
+      this._pollErrors += 1;
       if (err.response?.status === 401) {
         // Attempt token refresh once
         try {
+          this._debug('poll 401 – refreshing tokens');
           await this._api.refreshTokens();
           await this.setStoreValue('tokens', this._api.getTokenStore());
           const status = await this._api.getVehicleStatus(this._vin);
           await this._applyStatus(status);
+          this._pollErrors = 0;
           await this.setAvailable();
         } catch (innerErr) {
           this.error('Token refresh failed:', innerErr.message);
@@ -68,6 +76,9 @@ class AudiDevice extends Homey.Device {
         }
       } else {
         this.error('Poll error:', err.message);
+        if (this._pollErrors >= 5) {
+          await this.setUnavailable(`Poll failed (${this._pollErrors}x): ${err.message}`);
+        }
       }
     }
   }
@@ -129,11 +140,16 @@ class AudiDevice extends Homey.Device {
   }
 
   async _set(capability, value) {
+    this._debug(`set ${capability} =`, value);
     try {
       await this.setCapabilityValue(capability, value);
     } catch (err) {
       this.error(`setCapabilityValue(${capability}) failed:`, err.message);
     }
+  }
+
+  _debug(...args) {
+    if (this.getSetting('debug_logging')) this.log('[DEBUG]', ...args);
   }
 
   _fireChargingTriggers(newState) {
@@ -158,10 +174,10 @@ class AudiDevice extends Homey.Device {
   // ── Climate capability listener ─────────────────────────────────────────────
 
   async _onClimateToggle(value) {
+    const temp    = this.getCapabilityValue('climate_temperature') ?? 22;
+    const winHeat = this.getCapabilityValue('climate_window_heat') ?? false;
+    this._debug('climate toggle:', value ? 'start' : 'stop', `${temp}°C`, `windowHeat=${winHeat}`);
     if (value) {
-      // Send current slider/toggle values to the car when turning ON
-      const temp    = this.getCapabilityValue('climate_temperature') ?? 22;
-      const winHeat = this.getCapabilityValue('climate_window_heat') ?? false;
       await this._api.startClimate(this._vin, temp, winHeat, this._lastClimateSettings);
     } else {
       await this._api.stopClimate(this._vin);
@@ -196,16 +212,29 @@ class AudiDevice extends Homey.Device {
 
   async _onLockToggle(shouldLock) {
     const spin = this.getSetting('spin') || null;
-    if (shouldLock) {
-      await this._api.lock(this._vin, spin);
-    } else {
-      await this._api.unlock(this._vin, spin);
+    this._debug('lock toggle:', shouldLock ? 'lock' : 'unlock', spin ? '(with S-PIN)' : '(no S-PIN)');
+    try {
+      if (shouldLock) {
+        await this._api.lock(this._vin, spin);
+      } else {
+        await this._api.unlock(this._vin, spin);
+      }
+    } catch (err) {
+      if (err.message && err.message.includes('spin_error')) {
+        throw new Error(this.homey.__('device.spin_required'));
+      }
+      throw err;
     }
   }
 
   // ── Remote actions (called by flow-card listeners in app.js) ─────────────
 
-  async startClimate()  { return this._api.startClimate(this._vin); }
+  async startClimate() {
+    // Use current capability values so flow cards behave identically to the toggle
+    const temp    = this.getCapabilityValue('climate_temperature') ?? 22;
+    const winHeat = this.getCapabilityValue('climate_window_heat') ?? false;
+    return this._api.startClimate(this._vin, temp, winHeat, this._lastClimateSettings);
+  }
   async stopClimate()   { return this._api.stopClimate(this._vin); }
   async startCharging() { return this._api.startCharging(this._vin); }
   async stopCharging()  { return this._api.stopCharging(this._vin); }

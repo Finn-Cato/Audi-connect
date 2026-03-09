@@ -196,6 +196,13 @@
           "value": 5,
           "min": 2,
           "max": 60
+        },
+        {
+          "id": "debug_logging",
+          "type": "checkbox",
+          "label": { "en": "Debug logging" },
+          "hint": { "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)" },
+          "value": false
         }
       ],
       "pair": [
@@ -297,6 +304,13 @@
           "value": 5,
           "min": 2,
           "max": 60
+        },
+        {
+          "id": "debug_logging",
+          "type": "checkbox",
+          "label": { "en": "Debug logging" },
+          "hint": { "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)" },
+          "value": false
         }
       ],
       "pair": [
@@ -398,6 +412,13 @@
           "value": 5,
           "min": 2,
           "max": 60
+        },
+        {
+          "id": "debug_logging",
+          "type": "checkbox",
+          "label": { "en": "Debug logging" },
+          "hint": { "en": "Enable verbose logging in Homey Developer Tools (disable in normal use)" },
+          "value": false
         }
       ],
       "pair": [

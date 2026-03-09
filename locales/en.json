@@ -8,7 +8,8 @@
   },
   "device": {
     "reauth_required": "Re-authentication required. Please remove and re-add the vehicle.",
-    "poll_error": "Could not retrieve vehicle status."
+    "poll_error": "Could not retrieve vehicle status.",
+    "spin_required": "S-PIN required. Go to device Settings and enter your 4-digit S-PIN."
   },
   "charging_status": {
     "charging": "Charging",

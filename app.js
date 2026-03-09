@@ -5,7 +5,7 @@ const Homey = require('homey');
 class AudiApp extends Homey.App {
 
   async onInit() {
-    this.log('Audi Connect app has been initialized');
+    this.log('VAG Connect app has been initialized');
     this._registerFlowCards();
   }
 
