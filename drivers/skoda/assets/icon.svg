@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Skoda car silhouette (Skoda brand green) -->
+  <!-- Body -->
+  <rect x="5" y="54" width="90" height="22" rx="6" fill="#4BA82E"/>
+  <!-- Cabin/roof -->
+  <path d="M 20 54 L 32 33 L 68 33 L 80 54 Z" fill="#4BA82E"/>
+  <!-- Window highlight -->
+  <path d="M 26 54 L 36 37 L 64 37 L 74 54 Z" fill="white" opacity="0.25"/>
+  <!-- Left wheel -->
+  <circle cx="26" cy="76" r="11" fill="#222"/>
+  <circle cx="26" cy="76" r="5" fill="#999"/>
+  <!-- Right wheel -->
+  <circle cx="74" cy="76" r="11" fill="#222"/>
+  <circle cx="74" cy="76" r="5" fill="#999"/>
+  <!-- Front headlight -->
+  <rect x="84" y="57" width="7" height="5" rx="2" fill="#FFE066"/>
+  <!-- Rear light -->
+  <rect x="9" y="57" width="7" height="5" rx="2" fill="#FF4444"/>
+</svg>
