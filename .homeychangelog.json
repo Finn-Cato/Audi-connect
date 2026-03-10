@@ -1,4 +1,7 @@
 ﻿{
+    "0.1.3": {
+        "en": "Fixed Skoda login (400 error) caused by outdated OAuth redirect URI. Updated to current MySkoda app flow. Improved error messages in logs."
+    },
     "0.1.2": {
         "en": "Added unique driver icons per brand (Audi red car, Skoda green car). Replaced driver images with clean white-background brand images. Fixes App Store certification review."
     },

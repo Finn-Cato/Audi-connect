@@ -1,4 +1,9 @@
-﻿## v0.1.2  2026-03-10
+﻿## v0.1.3  2026-03-10
+
+- Fixed Škoda login (400 error) — updated to current MySkoda app OAuth redirect URI
+- Improved auth error messages: server response body now shown in logs for easier debugging
+
+## v0.1.2  2026-03-10
 
 - Added unique driver icons for Audi (red car) and Škoda (green car)
 - Replaced driver images with clean white-background brand images (Audi four rings / Škoda badge)
