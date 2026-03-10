@@ -1,4 +1,10 @@
-﻿## v0.1.1  2026-03-09
+﻿## v0.1.2  2026-03-10
+
+- Added unique driver icons for Audi (red car) and Škoda (green car)
+- Replaced driver images with clean white-background brand images (Audi four rings / Škoda badge)
+- Fixes App Store certification review issues
+
+## v0.1.1  2026-03-09
 
 - Removed Volkswagen support (a dedicated VW app already exists on the App Store)
 - Renamed app to **Audi Connect**

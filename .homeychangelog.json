@@ -1,4 +1,7 @@
 ﻿{
+    "0.1.2": {
+        "en": "Added unique driver icons per brand (Audi red car, Skoda green car). Replaced driver images with clean white-background brand images. Fixes App Store certification review."
+    },
     "0.1.1": {
         "en": "Removed Volkswagen support (a dedicated VW app already exists on the App Store). Renamed app to Audi Connect. New Audi and Skoda branding images. Fixed app install bundle size (97 MB to 11 MB, much faster installation)."
     },
