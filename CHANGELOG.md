@@ -1,4 +1,8 @@
-﻿## v0.1.31  2026-03-15
+﻿## v0.1.32  2026-03-15
+
+- Bugfix
+
+## v0.1.31  2026-03-15
 
 - Fixed Škoda login — corrected OAuth redirect URI to `myskoda://redirect/login/` (previous value was rejected by the VW identity server)
 
