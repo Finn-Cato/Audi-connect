@@ -27,6 +27,11 @@ class AudiDevice extends Homey.Device {
     this.registerCapabilityListener('climate_on', this._onClimateToggle.bind(this));
     this.registerCapabilityListener('climate_temperature', this._onTemperatureSet.bind(this));
     this.registerCapabilityListener('climate_window_heat', this._onWindowHeatToggle.bind(this));
+    this.registerCapabilityListener('button_refresh', async () => {
+      await this._poll();
+      // Snap back to false so it looks like a momentary button
+      await this.setCapabilityValue('button_refresh', false).catch(() => {});
+    });
 
     // Start polling
     this._startPolling();
