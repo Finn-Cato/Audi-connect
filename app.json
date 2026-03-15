@@ -1,6 +1,6 @@
 {
   "id": "com.audi.connect",
-  "version": "0.1.3",
+  "version": "0.1.31",
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "name": {
@@ -124,6 +124,16 @@
       "uiComponent": "toggle",
       "icon": "/assets/capabilities/climate_on.svg",
       "insights": false
+    },
+    "button_refresh": {
+      "type": "boolean",
+      "title": {
+        "en": "Refresh"
+      },
+      "getable": true,
+      "setable": true,
+      "uiComponent": "toggle",
+      "insights": false
     }
   },
   "flow": {
@@ -240,7 +250,8 @@
         "measure_range",
         "climate_on",
         "climate_temperature",
-        "climate_window_heat"
+        "climate_window_heat",
+        "button_refresh"
       ],
       "mobile": {
         "components": [
@@ -290,6 +301,12 @@
             "id": "toggle",
             "capabilities": [
               "climate_on"
+            ]
+          },
+          {
+            "id": "button",
+            "capabilities": [
+              "button_refresh"
             ]
           }
         ]
@@ -389,7 +406,8 @@
         "measure_range",
         "climate_on",
         "climate_temperature",
-        "climate_window_heat"
+        "climate_window_heat",
+        "button_refresh"
       ],
       "mobile": {
         "components": [
@@ -439,6 +457,12 @@
             "id": "toggle",
             "capabilities": [
               "climate_on"
+            ]
+          },
+          {
+            "id": "button",
+            "capabilities": [
+              "button_refresh"
             ]
           }
         ]

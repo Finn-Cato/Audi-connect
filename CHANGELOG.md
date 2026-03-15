@@ -1,4 +1,8 @@
-﻿## v0.1.3  2026-03-10
+﻿## v0.1.31  2026-03-15
+
+- Fixed Škoda login — corrected OAuth redirect URI to `myskoda://redirect/login/` (previous value was rejected by the VW identity server)
+
+## v0.1.3  2026-03-10
 
 - Fixed Škoda login (400 error) — updated to current MySkoda app OAuth redirect URI
 - Improved auth error messages: server response body now shown in logs for easier debugging
